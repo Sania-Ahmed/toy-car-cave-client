@@ -5,10 +5,12 @@ import Gallery from '../gallery/Gallery';
 import Stat from '../stat/Stat';
 import Opinion from '../opinion/Opinion';
 import Category from '../category/Category';
+import PageTitle from '../../../pageTitle/PageTitle';
 
 const Home = () => {
     return (
         <div className='bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% py-28'>
+            <PageTitle title={'Home'}></PageTitle>
            <Banner></Banner>
            <h2 className='text-4xl font-semibold text-white mt-40 text-center'>SCROLL ON THE IMAGES TO SEE THE 
            GALLERY OF OUR HAPPY KIDS!</h2>

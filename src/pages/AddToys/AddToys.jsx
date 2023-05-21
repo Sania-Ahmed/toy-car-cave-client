@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import PageTitle from '../../pageTitle/PageTitle';
 
 const AddToys = () => {
     const {user} = useContext(AuthContext);
@@ -39,6 +40,7 @@ const AddToys = () => {
     }
     return (
         <div className='p-4'>
+            <PageTitle title={ 'addToy' }></PageTitle>
             <h3 className='my-5 font-semibold text-center text-4xl'>Add a Toy</h3>
             <form onSubmit={addToy} className='bg-sky-700 p-6 rounded-lg' >
                 <label className="label">
