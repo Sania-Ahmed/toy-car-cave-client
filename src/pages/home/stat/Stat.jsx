@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+
 
 const Stat = () => {
+  
     return (
-        <div className='mt-20 w-full flex justify-center'>
+        <div data-aos="flip-right" data-aos-delay="300" className='mt-20 w-full flex justify-center  '>
             <div className="stats stats-vertical lg:stats-horizontal shadow w-2/3 ">
   
   <div className="stat">
