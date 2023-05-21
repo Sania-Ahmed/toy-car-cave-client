@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hook/useTitle';
 
 const Details = () => {
+    useTitle('detail') ;
     const toy = useLoaderData()
     const { _id, seller_name, seller_email, toy_name, sub_category, price, rating, quantity, details, photo } = toy;
     return (
