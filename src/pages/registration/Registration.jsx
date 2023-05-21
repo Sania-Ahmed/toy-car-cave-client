@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext} from 'react';
+import React, { useContext, useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import useTitle from '../../hook/useTitle';
@@ -7,6 +7,7 @@ import useTitle from '../../hook/useTitle';
 
 const Registration = () => {
     useTitle('Register') ;
+    const [error, setError] = useState(' ') ;
     const { createUser, updateUser, setUser, setReload } = useContext(AuthContext);
     const navigate = useNavigate()
     const handleRegistration = (e) => {
@@ -34,12 +35,14 @@ const Registration = () => {
             .catch((error) => {
                 const errorMessage = error.message;
                 console.log(errorMessage)
+                setError(errorMessage) ;
                 form.reset();
             });
     }
     return (
         <>
             <h3 className='text-2xl font-semibold text-center bg-base-200 pt-6'>Register</h3>
+            <p className='text-2xl text-center text-warning font-semibold my-7'>{error}</p>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content">
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

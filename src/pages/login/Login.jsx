@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import useTitle from '../../hook/useTitle';
 
 const Login = () => {
   useTitle('Login') ;
+  const [error, setError] = useState(' ') ;
   const { signIn, signWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate() ;
     const location = useLocation();
@@ -28,6 +29,7 @@ const Login = () => {
       )
       .catch((error) => {
         const errorMessage = error.message;
+        setError(errorMessage) ;
         form.reset();
       });
   }
@@ -44,6 +46,7 @@ const Login = () => {
       .catch((error) => {
         const errorMessage = error.message;
         console.log(errorMessage)
+        setError(errorMessage) ;
         
       });
     }
@@ -52,6 +55,7 @@ const Login = () => {
   return (
     <>
       <h3 className='text-2xl font-semibold text-center bg-base-200 pt-6'>Login</h3>
+      <p className='text-2xl text-center text-warning font-semibold my-7'>{error}</p>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content">
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
