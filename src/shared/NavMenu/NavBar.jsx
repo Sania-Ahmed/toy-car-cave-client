@@ -1,14 +1,24 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import img from '../../assets/506287.png'
+import { AuthContext } from '../../providers/AuthProvider';
 
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+            .then()
+    }
     const navlinks = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/AllToys'>All Toys</Link></li>
-        <li><Link to='/MyToys'>My toys</Link></li>
-        <li><Link to='/AddToys'>Add toys</Link></li>
+        {
+            user && <>
+                <li><Link to='/MyToys'>My toys</Link></li>
+                <li><Link to='/AddToys'>Add toys</Link></li>
+            </>
+        }
         <li><Link to='/blogs'>Blogs</Link></li>
     </>
     return (
@@ -31,10 +41,16 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className='mr-2'>log out</Link>
-                <div className="w-10 rounded-full">
-                    <img src="https://img.freepik.com/free-icon/people_318-399336.jpg?size=626&ext=jpg&ga=GA1.1.632902743.1676570136&semt=sph" />
-                </div>
+                {
+                    user ?
+                        <>
+                            <Link onClick={handleLogOut} className='mr-2'>log out</Link>
+                            < div className="w-10 rounded-full tooltip tooltip-left tooltip-info" data-tip={`${user.displayName || 'Name unavailable'}`}>
+                            <img className='rounded-full w-full'  src={user?.photoURL} />
+                            </div>
+                        </> : <Link
+                            to={'/login'}> <button className='btn btn-primary'>Login</button> </Link>
+                }
             </div>
         </div>
     );

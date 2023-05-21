@@ -4,6 +4,7 @@ import Banner from '../banner/Banner';
 import Gallery from '../gallery/Gallery';
 import Stat from '../stat/Stat';
 import Opinion from '../opinion/Opinion';
+import Category from '../category/Category';
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
            <h2 className='text-4xl font-semibold text-white mt-40 text-center'>SCROLL ON THE IMAGES TO SEE THE 
            GALLERY OF OUR HAPPY KIDS!</h2>
            <Gallery></Gallery>
+           <Category> </Category>
            <h2 className='text-4xl font-semibold text-white mt-40 text-center'> Our Current Stat</h2>
            <Stat></Stat>
            <h2 className='text-4xl font-semibold text-white mt-40 text-center'> What parents say about us ?</h2>
