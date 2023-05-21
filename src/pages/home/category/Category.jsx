@@ -12,7 +12,7 @@ const Category = () => {
         console.log(tabName)
     }
     useEffect(() => {
-        fetch(`http://localhost:5000/cars/${activeTab}`)
+        fetch(`https://toy-car-cave.vercel.app/cars/${activeTab}`)
             .then(res => res.json())
             .then(data => setToys(data))
     }, [activeTab])

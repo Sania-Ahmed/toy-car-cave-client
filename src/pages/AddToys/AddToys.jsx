@@ -28,7 +28,7 @@ const AddToys = () => {
         console.log(toy)
 
 
-        fetch('http://localhost:5000/postCar', {
+        fetch('https://toy-car-cave.vercel.app/postCar', {
             method: 'POST',
             headers: {'content-type' : 'application/json'},
             body: JSON.stringify(toy)

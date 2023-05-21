@@ -8,7 +8,7 @@ const MyToys = () => {
   const [myToys, setMyToys] = useState([]);
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:5000/myCars/${user?.email}`)
+    fetch(`https://toy-car-cave.vercel.app/myCars/${user?.email}`)
       .then(res => res.json())
       .then(data => setMyToys(data))
   }, [user])
@@ -17,7 +17,7 @@ const MyToys = () => {
     console.log(id)
     const proceed = confirm('Are You sure you want to delete ?')
     if (proceed) {
-      fetch(`http://localhost:5000/myCars/${id}`, {
+      fetch(`https://toy-car-cave.vercel.app/myCars/${id}`, {
         method: 'DELETE'
       })
         .then(res => res.json())
@@ -33,7 +33,7 @@ const MyToys = () => {
   }
 
   const handleSort = () => {
-    fetch(`http://localhost:5000/sortedAllCars/${user?.email}`)
+    fetch(`https://toy-car-cave.vercel.app/sortedAllCars/${user?.email}`)
       .then(res => res.json())
       .then(data => setMyToys(data))
 

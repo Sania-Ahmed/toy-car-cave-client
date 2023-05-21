@@ -7,14 +7,14 @@ const AllToys = () => {
   const [toys, setToys] = useState([]);
   const [searched, setSearched] = useState('')
   useEffect(() => {
-    fetch('http://localhost:5000/allCars')
+    fetch('https://toy-car-cave.vercel.app/allCars')
       .then(res => res.json())
       .then(data => setToys(data))
     setLoading(false);
   }, [])
   const handleSearch = () => {
     console.log('clicked')
-    fetch(`http://localhost:5000/searched/${searched}`)
+    fetch(`https://toy-car-cave.vercel.app/searched/${searched}`)
       .then(res => res.json())
       .then(data => setToys(data))
       setLoading(false);

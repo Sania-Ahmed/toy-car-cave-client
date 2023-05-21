@@ -31,7 +31,7 @@ const router = createBrowserRouter([
             {
                path: '/details/:id',
                element: <PrivateRoute><Details></Details></PrivateRoute>,
-               loader : ({params}) => fetch(`http://localhost:5000/myCar/${params.id}`)
+               loader : ({params}) => fetch(`https://toy-car-cave.vercel.app/myCar/${params.id}`)
             }, 
             {
                 path: '/MyToys',
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
             {
                 path: '/updateToy/:id',
                 element : <UpdateToy></UpdateToy>,
-                loader : ({params}) => fetch(`http://localhost:5000/myCar/${params.id}`)
+                loader : ({params}) => fetch(`https://toy-car-cave.vercel.app/myCar/${params.id}`)
             },
             {
                 path: '/AddToys',
