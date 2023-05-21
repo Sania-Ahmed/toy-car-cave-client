@@ -16,14 +16,19 @@ const UpdateToy = () => {
         const form = e.target;
         
         const price = form.price.value;
-        
         const quantity = form.quantity.value;
         const details = form.details.value;
-        
+     
         const updatedtoy = {
+            seller_name: user?.displayName ,
+            seller_email: user?.email,
+            toy_name,
+            sub_category,
             price,
+            rating,
             quantity,
-            details
+            details,
+            photo
         }
         console.log(updatedtoy)
 
@@ -39,7 +44,7 @@ const UpdateToy = () => {
             if(data.modifiedCount > 0) {
                 Swal.fire(
                     'Updated!',
-                    'Your Toy has been Updated.',
+                    'Your Toy has been updated.',
                     'success'
                   )
             }
@@ -56,12 +61,13 @@ const UpdateToy = () => {
             <h3 className='my-5 font-semibold text-center text-4xl'>Update a Toy</h3>
             <form onSubmit={updateToy} className='bg-sky-700 p-6 rounded-lg' >
                 
-                <label className="label">
-                    <span className="label-text text-2xl text-white font-semibold">Toy Info</span>
-                </label>
+               
                 <input type="text" defaultValue={price} name='price' placeholder="price" className="input my-4 ml-4 input-bordered input-primary w-1/4 " />
+                
                 <input type="text" defaultValue={quantity} name='quantity' placeholder="Available Quantity" className="input my-4 ml-4 input-bordered input-primary w-1/4 " />
                 <input type="text" defaultValue={details} name='details' placeholder="detail description" className="input my-4 input-bordered input-primary ml-4 w-full " />
+              
+
                 <div className='flex justify-center w-full'>
                     <input type="submit" className='w-1/2 btn ' value="Update" />
                 </div>
