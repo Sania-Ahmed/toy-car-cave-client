@@ -2,9 +2,11 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import PageTitle from '../../pageTitle/PageTitle';
+import useTitle from '../../hook/useTitle';
 
 const AddToys = () => {
     const {user} = useContext(AuthContext);
+    useTitle('add toy')
     const addToy = (e) => {
         e.preventDefault() ;
         const form = e.target;
@@ -29,6 +31,7 @@ const AddToys = () => {
         console.log(toy)
 
 
+
         fetch('https://toy-car-cave.vercel.app/postCar', {
             method: 'POST',
             headers: {'content-type' : 'application/json'},
@@ -40,7 +43,6 @@ const AddToys = () => {
     }
     return (
         <div className='p-4'>
-            <PageTitle title={ 'addToy' }></PageTitle>
             <h3 className='my-5 font-semibold text-center text-4xl'>Add a Toy</h3>
             <form onSubmit={addToy} className='bg-sky-700 p-6 rounded-lg' >
                 <label className="label">
