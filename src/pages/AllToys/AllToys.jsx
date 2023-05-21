@@ -4,7 +4,7 @@ import Car from '../Car/Car';
 import useTitle from '../../hook/useTitle';
 
 const AllToys = () => {
-  useTitle('allToy')
+  useTitle('allToy') ;
   const [loading, setLoading] = useState(true)
   const [toys, setToys] = useState([]);
   const [searched, setSearched] = useState('')

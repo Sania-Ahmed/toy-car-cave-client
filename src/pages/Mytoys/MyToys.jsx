@@ -6,7 +6,7 @@ import useTitle from '../../hook/useTitle';
 
 
 const MyToys = () => {
-  useTitle('My toy')
+  useTitle('My toy') ;
   const [myToys, setMyToys] = useState([]);
   const { user } = useContext(AuthContext);
   useEffect(() => {
