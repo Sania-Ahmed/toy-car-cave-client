@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import useTitle from '../../hook/useTitle';
+import Swal from 'sweetalert2';
 
 const UpdateToy = () => {
     useTitle('update') ;
@@ -43,7 +44,11 @@ const UpdateToy = () => {
         .then(res => res.json())
         .then( data => {
             if(data.modifiedCount > 0) {
-                alert('update done ! yaayyy . ')
+                Swal.fire(
+                    'Updated!',
+                    'Your Toy has been Updated.',
+                    'success'
+                  )
             }
         })
 

@@ -2,6 +2,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import useTitle from '../../hook/useTitle';
+import Swal from 'sweetalert2';
 
 const AddToys = () => {
     const {user} = useContext(AuthContext);
@@ -38,7 +39,15 @@ const AddToys = () => {
 
         })
         .then(res => res.json())
-        .then( data => console.log(data))
+        .then( data => {
+            if(data.insertedId){
+                Swal.fire(
+                    'Added!',
+                    'Your Toy has been Added.',
+                    'success'
+                  )
+            }
+        })
     }
     return (
         <div className='p-4'>

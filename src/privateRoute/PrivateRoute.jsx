@@ -4,6 +4,7 @@ import React from 'react';
 import { Navigate, useLocation } from 'react-router';
 import { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 const PrivateRoute = ({ children }) => {
@@ -18,7 +19,11 @@ const PrivateRoute = ({ children }) => {
         return children;
     }
     else{
-        alert ('please log in first') ;
+        Swal.fire(
+            'Ooops!',
+            'Please log in first',
+            'success'
+          );
     }
     return <>
         < Navigate state={{ from: location }} to="/login" replace></Navigate>

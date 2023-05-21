@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import MyToyCard from './MyToyCard';
 import useTitle from '../../hook/useTitle';
+import Swal from 'sweetalert2';
 
 
 const MyToys = () => {
@@ -17,21 +18,35 @@ const MyToys = () => {
 
   const handleDelete = id => {
     console.log(id)
-    const proceed = confirm('Are You sure you want to delete ?')
-    if (proceed) {
-      fetch(`https://toy-car-cave.vercel.app/myCars/${id}`, {
-        method: 'DELETE'
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data.deletedCount > 0) {
-            alert('deleted successful');
-            const remaining = myToys.filter(toy => toy._id !== id);
-            setMyToys(remaining);
-
-          }
+    Swal.fire({
+      title: 'Are you sure you want to delete?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://toy-car-cave.vercel.app/myCars/${id}`, {
+          method: 'DELETE'
         })
-    }
+          .then(res => res.json())
+          .then(data => {
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                'Deleted!',
+                'Your Toy has been deleted.',
+                'success'
+              )
+              const remaining = myToys.filter(toy => toy._id !== id);
+              setMyToys(remaining);
+  
+            }
+          })
+      }
+    })
+  
   }
 
   const handleSort = () => {
